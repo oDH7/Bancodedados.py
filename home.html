@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Meu Blog</title>
-</head>
-<body>
-    <h1>Bem-vindo ao Meu Blog!</h1>
-    <p>Confira as últimas postagens abaixo:</p>
+{% extends 'base.html' %}
+
+{% block title %}Meu Blog{% endblock %}
+
+{% block content %}
+    <h2>Confira as últimas postagens abaixo:</h2>
     {% include 'postagens.html' %}
-</body>
-</html>
+
+    <div>
+        <a class="btn" href="{{ url_for('sobre') }}">Sobre</a>
+        <a class="btn" href="{{ url_for('contato') }}">Contato</a>
+        <a class="btn" href="{{ url_for('postagens') }}">Ver Todas as Postagens</a>
+    </div>
+{% endblock %}
