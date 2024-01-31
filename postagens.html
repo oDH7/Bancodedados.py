@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Postagens</title>
+</head>
+<body>
+    <h2>Postagens Recentes</h2>
+    <ul>
+        {% for postagem in postagens %}
+            <li><strong>{{ postagem[1] }}</strong>: {{ postagem[2] }}</li>
+        {% endfor %}
+    </ul>
+    {% if 'usuario' in session and session['usuario'] == 'admin' %}
+        <h3>Adicionar Nova Postagem</h3>
+        <form method="post" action="{{ url_for('nova_postagem') }}">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" required><br>
+            <label for="conteudo">Conteúdo:</label>
+            <textarea name="conteudo" rows="4" required></textarea><br>
+            <input type="submit" value="Adicionar Postagem">
+        </form>
+    {% endif %}
+</body>
+</html>
